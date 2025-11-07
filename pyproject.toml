@@ -1,0 +1,60 @@
+[build-system]
+requires = ["setuptools>=61.0.0, <69.3.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "wallet"
+version = "0.0.1"
+requires-python = ">= 3.10"
+dependencies = [
+    "fastapi>=0.100,<=0.115",
+    "granian >=2.5,<=2.5.5",
+    "asyncpg>=0.25,<=0.28"
+]
+authors = [{name = "Klimov Artem", email = "artemklimowwork@gmail.com"}]
+description = "Console utility for work with measurment instruments database"
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.3,<=8.4.0",
+    "requests>=2.25,<=2.30",
+    "pre-commit",
+    "ruff",
+    "ty",
+]
+
+[tool.ruff]
+cache-dir = "~/.cache/ruff"
+
+exclude = [
+    "__pycache__",
+    "*venv/",
+    ".venv",
+    "venv",
+    ".env",
+    "ruff_cache",
+    ".git",
+    ".vscode",
+]
+
+line-length = 120
+indent-width = 4
+show-fixes = true
+
+
+[tool.ruff.lint]
+select = []
+ignore = []
+fixable = ["ALL"]
+unfixable = []
+
+[tool.ruff.format]
+indent-style = "space"
+line-ending = "auto"
+
+
+[tool.pytest.ini_options]
+testpaths = [
+    "tests"
+]
+addopts = "--rootdir=src/"
