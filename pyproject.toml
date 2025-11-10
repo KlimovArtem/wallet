@@ -7,21 +7,22 @@ name = "wallet"
 version = "0.0.1"
 requires-python = ">= 3.10"
 dependencies = [
-    "fastapi",
-    "granian[reload]",
-    "asyncpg"
+    "fastapi==0.121.1",
+    "granian[reload]==2.5.7",
+    "asyncpg==0.30.0",
+    "databases[postgresql]"
 ]
 authors = [{name = "Klimov Artem", email = "artemklimowwork@gmail.com"}]
 description = "Console utility for work with measurment instruments database"
 
 [project.optional-dependencies]
 dev = [
-    "pytest",
-    "httpx",
-    "requests",
-    "pre-commit",
-    "ruff",
-    "ty",
+    "pytest==9.0.0",
+    "httpx==0.28.1",
+    "requests==2.32.5",
+    "pre-commit==4.4.0",
+    "ruff==0.14.4",
+    "ty==0.0.1a25",
 ]
 
 [tool.ruff]

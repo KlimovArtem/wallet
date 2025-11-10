@@ -1,12 +1,18 @@
+from contextlib import asynccontextmanager
 from fastapi import FastAPI
 
-from app.api import wallets
+from app.api import routers
+from app.wallets import models
 
 
-app = FastAPI()
+models.metadata.create_all(models.engine)
 
-app.include_router(wallets.v1_router)
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    await models.database.connect()
+    yield
+    await models.database.disconnect()
 
-@app.get("/")
-async def root():
-    return "Hello World"
+app = FastAPI(lifespan=lifespan)
+
+app.include_router(routers.v1_router)
