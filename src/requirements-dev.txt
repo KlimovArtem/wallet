@@ -1,7 +1,9 @@
-fastapi>=0.100,<=0.115
-granian>=2.5,<=2.5.5
-asyncpg>=0.25,<=0.28
-pytest>=8.3,<=8.4
-requests>=2.25,<=2.30
+fastapi
+granian[reload]
+asyncpg
+pytest
+requests
+httpx
+pre-commit
 ruff
 ty
