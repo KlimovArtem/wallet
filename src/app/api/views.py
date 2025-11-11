@@ -10,18 +10,18 @@ async def post():
     return await models.database.execute(query=query)
 
 
-@routers.wallets_router.post("/", status_code=201)
+@routers.v1_wallets_router.post("/", status_code=201)
 async def create_wallet():
     new_wallet_id = await post()
     return { "id": new_wallet_id, "balance":  0}
 
-@routers.wallets_router.get("/{wallet_id}")
-async def wallet_balance(wallet_id: int):
+@routers.v1_wallets_router.get("/{wallet_id}")
+async def wallet_balance(wallet_id: uuid.UUID):
     # wallet = Wallet.objects.filter(id=wallet_id)[0]
     return {"id": wallet_id, "balance":  0}
 
-@routers.wallets_router.post("/{wallet_id}/operation")
-async def change_wallet_balance(wallet_id: int, payload: schemes.OperationWithWalletSchema):
+@routers.v1_wallets_router.post("/{wallet_id}/operation")
+async def change_wallet_balance(wallet_id: uuid.UUID, payload: schemes.OperationWithWalletSchema):
     match payload.operation_type:
         # пополнение
         case "DEPOSIT":

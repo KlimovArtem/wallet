@@ -1,4 +1,6 @@
 fastapi==0.121.1
 granian[reload]==2.5.7
+psycopg2-binary
 asyncpg==0.30.0
 databases[postgresql]
+python-dotenv

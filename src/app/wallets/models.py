@@ -21,6 +21,6 @@ metadata = MetaData()
 wallets = Table(
     "wallets",
     metadata,
-    Column("id", UUID(as_uuid=True), primary_key=True, default=uuid.uuid4, unique=True),
-    Column("balance", Integer, default=0)
+    Column("balance", Integer, default=0),
+    Column("id", UUID, primary_key=True, default=uuid.uuid4, unique=True),
 )

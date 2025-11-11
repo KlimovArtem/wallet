@@ -4,13 +4,16 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "wallet"
+license = "GNU Library"
 version = "0.0.1"
 requires-python = ">= 3.10"
 dependencies = [
     "fastapi==0.121.1",
     "granian[reload]==2.5.7",
     "asyncpg==0.30.0",
-    "databases[postgresql]"
+    "psycopg2-binary",
+    "databases[postgresql]",
+    "python-dotenv"
 ]
 authors = [{name = "Klimov Artem", email = "artemklimowwork@gmail.com"}]
 description = "Console utility for work with measurment instruments database"
