@@ -15,5 +15,4 @@ class Postgres:
     async def disconnect(self):
         self.pool.terminate()
 
-database = Postgres(os.getenv("DTATBASE_URL", ""))
-
+database = Postgres(os.getenv("DB_URL", ""))

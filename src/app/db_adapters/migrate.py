@@ -4,17 +4,19 @@ from app.db_adapters import postgres
 
 async def create_table():
     query = """
-        CREATE TABLE IF NOT EXISTS schema_migrations",
-        (version INTEGER PRIMARY KEY,
-        name TEXT NOT NULL,
-        migrated_at TIMESTAMP NOT NULL DEFAULT NOW());"""
+        CREATE TABLE IF NOT EXISTS schema_migrations (
+            version INTEGER PRIMARY KEY,
+            name TEXT NOT NULL,
+            migrated_at TIMESTAMP NOT NULL DEFAULT NOW()
+        );"""
 
     async with postgres.database.pool.acquire() as connection:
         await connection.execute(query)
 
 async def get_pending_migrations():
     migrations = []
-    for path in Path('./src/db/migrations').iterdir():
+    print(Path('./migrations').resolve())
+    for path in Path('./migrations').iterdir():
         if not path.is_file():
             continue
         migration = {}
