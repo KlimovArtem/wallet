@@ -1,5 +1,5 @@
-asyncpg                                                                                         
+asyncpg
 fastapi[standard]
 pydantic
-granian                                                                             
+granian
 python-dotenv
