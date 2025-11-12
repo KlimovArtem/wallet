@@ -1,0 +1,5 @@
+asyncpg                                                                                         
+fastapi[standard]
+pydantic
+granian                                                                             
+python-dotenv

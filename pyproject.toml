@@ -7,17 +7,18 @@ name = "wallet"
 version = "0.0.1"
 requires-python = ">= 3.10"
 dependencies = [
-    "fastapi>=0.100,<=0.115",
-    "granian >=2.5,<=2.5.5",
-    "asyncpg>=0.25,<=0.28"
+    "asyncpg",
+    "fastapi[standard]",
+    "granian",
 ]
 authors = [{name = "Klimov Artem", email = "artemklimowwork@gmail.com"}]
 description = "Console utility for work with measurment instruments database"
 
 [project.optional-dependencies]
 dev = [
-    "pytest>=8.3,<=8.4.0",
-    "requests>=2.25,<=2.30",
+    "pytest",
+    "pytest-asyncio",
+    "httpx",
     "pre-commit",
     "ruff",
     "ty",
@@ -33,6 +34,7 @@ exclude = [
     "venv",
     ".env",
     "ruff_cache",
+    "pytest_cache",
     ".git",
     ".vscode",
 ]
@@ -52,9 +54,5 @@ unfixable = []
 indent-style = "space"
 line-ending = "auto"
 
-
 [tool.pytest.ini_options]
-testpaths = [
-    "tests"
-]
-addopts = "--rootdir=src/"
+cache-dir = "~/.cache/pytest"

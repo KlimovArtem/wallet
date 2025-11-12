@@ -1,0 +1,11 @@
+asyncpg
+fastapi[standard]
+granian
+pydantic
+pytest
+pytest-asyncio
+httpx
+ruff
+ty
+pre-commit
+python-dotenv
