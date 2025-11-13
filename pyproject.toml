@@ -13,7 +13,7 @@ dependencies = [
 ]
 authors = [{name = "Klimov Artem", email = "artemklimowwork@gmail.com"}]
 description = "Console utility for work with measurment instruments database"
-
+readme = "README.md"
 [project.optional-dependencies]
 dev = [
     "pytest",
