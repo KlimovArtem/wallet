@@ -54,5 +54,14 @@ unfixable = []
 indent-style = "space"
 line-ending = "auto"
 
+[tool.ruff.lint.isort]
+force-single-line = true
+lines-between-types = 1
+lines-after-imports = 2
+known-first-party = ["src"]
+known-third-party = ["*venv/lib/python*/site-packages"]
+
 [tool.pytest.ini_options]
-cache-dir = "~/.cache/pytest"
+cache_dir = "~/.cache/pytest"
+pythonpath = ["src", "tests"]
+consider_namespace_packages = "True"

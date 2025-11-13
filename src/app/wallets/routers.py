@@ -12,13 +12,16 @@ wallets_router = APIRouter(prefix="/wallets", tags=["wallets"])
 async def get_wallet_balance(wallet_id: UUID):
     return await db_queries.select_wallet(wallet_id)
 
+@wallets_router.get("/")
+async def get_all_wallet():
+    return await db_queries.select_all_wallets()
 
-@wallets_router.post("/{wallets_id/operation}")
+
+@wallets_router.post("/{wallets_id/operation}", status_code=204)
 async def change_wallet_balance(wallet_id: UUID, payload: OperationWithWallet):
     await db_queries.update_wallet(wallet_id, payload.operation_type, payload.amount)
 
 
-@wallets_router.post("/")
+@wallets_router.post("/", status_code=201)
 async def create_wallet():
-    return await db_queries.insert_wallet()
-
+    await db_queries.insert_wallet()

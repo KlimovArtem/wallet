@@ -1,5 +1,5 @@
 from pathlib import Path
-from app.db_adapters import postgres
+from app.db_adapters import postgres as db_adapter
 
 
 async def create_table():
@@ -10,13 +10,13 @@ async def create_table():
             migrated_at TIMESTAMP NOT NULL DEFAULT NOW()
         );"""
 
-    async with postgres.database.pool.acquire() as connection:
+    async with db_adapter.database.pool.acquire() as connection:
         await connection.execute(query)
 
 async def get_pending_migrations():
     migrations = []
-    print(Path('./migrations').resolve())
-    for path in Path('./migrations').iterdir():
+    migrations_dir = Path(__file__).parent / "migrations"
+    for path in migrations_dir.iterdir():
         if not path.is_file():
             continue
         migration = {}
@@ -26,7 +26,7 @@ async def get_pending_migrations():
         migrations.append(migration)
 
     query = "SELECT version from schema_migrations ORDER BY version ASC"
-    async with postgres.database.pool.acquire() as connection:
+    async with db_adapter.database.pool.acquire() as connection:
         records = await connection.fetch(query)
         applied_versions = [r["version"] for r in records]
 
@@ -39,7 +39,7 @@ async def apply_pending_migrations():
     await create_table()
     migrations = await get_pending_migrations()
 
-    async with postgres.database.pool.acquire() as connection:
+    async with db_adapter.database.pool.acquire() as connection:
         async with connection.transaction():
             for migration in migrations:
                 await connection.execute(migration["content"])
