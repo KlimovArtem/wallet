@@ -1,18 +1,100 @@
+.nfs*
+
+# Игнорировать байт-код Python
 __pycache__/
 *.py[cod]
-*$py.class
-*.so
-*.egg
-.eggs/
-.pytest_cache/
-.ruff_cache/
-.coverage
-.cache
-dist/
-build/
-*.egg-info/
-*venv/
-.venv/
-.env/
+*.pyc
+*.pyo
+*.pyd
+
+# Игнорировать файлы, созданные IDE
+.idea/
+*.iml
+*.ipynb
 .vscode/
+
+# Игнорировать виртуальное окружение
+env/
+venv/
+venv3/
+.venv/
+.python-version
+*env
+*venv/
+# Игнорировать файлы сборки
+build/
+dist/
+*.egg-info/
+*.egg
+*.whl
+
+# Игнорировать файлы документации
+_build/
+docs/_build/
+
+# Игнорировать файлы логов
+logs/
+*.log
+*.out
+*.err
+
+# Игнорировать временные файлы
+*.tmp
+*.bak
+*.swp
+*.swo
+*.swn
+*.swm
+*.swl
+*.swk
+*.swj
+*.swi
+*.swh
+*.swg
+*.swf
+*.swd
+*.swc
+*.swb
+*.swa
+
+# Игнорировать файлы настроек
 .DS_Store
+.AppleDouble
+.LSOverride
+Thumbs.db
+ehthumbs.db
+
+# Игнорировать файлы баз данных
+db.sqlite3
+*.sqlite3
+*.db
+
+# Игнорировать файлы конфигурации
+.env
+.flask_session
+.secrets
+
+# Игнорировать файлы загрузок
+uploads/
+media/
+static/cache/
+
+# Игнорировать файлы отладки
+.pytest_cache/
+.hypothesis/
+.coverage
+coverage.xml
+htmlcov/
+
+# Игнорировать файлы Docker
+.docker/
+docker-compose.override.yml
+
+# Игнорировать файлы тестирования
+tests/__pycache__/
+tests/*.pyc
+tests/*.pyo
+
+# Игнорировать файлы миграции
+migrations/versions/
+

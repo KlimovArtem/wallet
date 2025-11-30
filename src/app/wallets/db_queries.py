@@ -2,7 +2,7 @@ import uuid
 
 from app.db_adapters import postgres as db_adapter
 from app.wallets import schemas
-from app.app_logger import logger
+
 
 async def select_wallet(wallet_id: uuid.UUID) -> schemas.Wallet| None:
     query = "SELECT * from wallets WHERE id = $1"
