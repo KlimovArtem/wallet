@@ -16,4 +16,4 @@ class Postgres:
     async def disconnect(self):
         self.pool.terminate()
 
-database = Postgres(os.getenv("DB_URL", ""))
+database = Postgres(os.getenv("TEST_DB_URL", "")) if os.getenv("TEST_MODE", "enable") else Postgres(os.getenv("DB_URL", ""))

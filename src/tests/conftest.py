@@ -9,14 +9,13 @@ from src.app.db_adapters import migrate
 @pytest.fixture()
 async def setup_database():
     await db_adapter.database.connect()
-    async with db_adapter.database.pool.acquire() as connection:
-        await connection.execute("CREATE TABLE IF NOT EXISTS test;")
     await migrate.apply_pending_migrations()
 
     yield
 
     async with db_adapter.database.pool.acquire() as connection:
-        await connection.execute("DROP SCHEMA IF EXISTS test CASCADE;")
+        await connection.execute("DROP SCHEMA IF EXISTS wallets CASCADE;")
+        await connection.execute("DROP SCHEMA IF EXISTS schema_migrations CASCADE;")
     await db_adapter.database.disconnect()
 
 
