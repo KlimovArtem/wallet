@@ -18,6 +18,7 @@ readme = "README.md"
 dev = [
     "pytest",
     "pytest-asyncio",
+    "pytest-anyio",
     "httpx",
     "pre-commit",
     "ruff",
@@ -43,6 +44,8 @@ line-length = 120
 indent-width = 4
 show-fixes = true
 
+[tool.setuptools.packages.find]
+where = [".", "src"]
 
 [tool.ruff.lint]
 select = []
@@ -64,4 +67,5 @@ known-third-party = ["*venv/lib/python*/site-packages"]
 [tool.pytest.ini_options]
 cache_dir = "~/.cache/pytest"
 pythonpath = ["src", "tests"]
+anyio_mode = "auto"
 consider_namespace_packages = "True"
